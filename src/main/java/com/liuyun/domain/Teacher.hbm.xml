@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.liuyun.domain">
+	<class name="Teacher" table="teacher">
+		<id name="tchId" column="tch_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="tchName" column="tch_name"></property>
+		<set name="students" table="tch_stu_ref" cascade="save-update,delete" >
+			<key column="tch_id" />
+			<many-to-many class="Student" column="stu_id" />
+		</set>
+	</class>
+</hibernate-mapping>
